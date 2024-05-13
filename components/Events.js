@@ -3,7 +3,7 @@ import { SafeAreaView, Text, TouchableOpacity, View, Image} from "react-native";
 import Styles from "./Styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default Events = [
+export const Events = [
     {
         id: Math.random(),
         name: "Hail the Sun Live",
