@@ -9,7 +9,7 @@ export const Bold = props => (
 )
 
 export const colors = {
-    primary: "orange"
+    primary: "purple"
 }
 
 export default Styles = StyleSheet.create({

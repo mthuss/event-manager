@@ -9,7 +9,6 @@ export default props => {
 
     return(
     <View style={[Styles.tela,{backgroundColor: '#fff'}]}>
-        {/* <Text>Home</Text> */}
         <FlatList data={state.Events}
             renderItem={({item}) => <Event item={item}/>}
             keyExtractor={(item) => item.id}
