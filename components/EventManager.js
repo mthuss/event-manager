@@ -6,9 +6,8 @@ import EventsContext from "./EventsContext";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const ManagerStack = createNativeStackNavigator()
 
-function Manager() {
+export default props => {
     const {state,dispatch} = useContext(EventsContext)
 
     return(
@@ -22,11 +21,4 @@ function Manager() {
             <Ionicons name="add" size={32} color={"white"}/>
         </TouchableOpacity>
     </View>)
-}
-
-export default props => {
-    return(
-    <ManagerStack.Navigator initialRouteName="Manager" screenOptions={{ headerShown: false }}>
-        <ManagerStack.Screen  name="Manager" component={Manager}/>
-    </ManagerStack.Navigator>)
 }
