@@ -3,13 +3,15 @@ import EventManager from "./EventManager"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AddEvent from "./addEvent";
 
 const Tab = createBottomTabNavigator()
 const ManagerStack = createNativeStackNavigator()
 
 const Manager = () => (
     <ManagerStack.Navigator initialRouteName="Manager" screenOptions={{ headerShown: false }}>
-        <ManagerStack.Screen  name="Manager" component={EventManager}/>
+        <ManagerStack.Screen name="Manager" component={EventManager}/>
+        <ManagerStack.Screen name="AddEvent" component={AddEvent}/>
     </ManagerStack.Navigator>
 )
 

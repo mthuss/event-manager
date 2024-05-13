@@ -17,7 +17,7 @@ export default props => {
             renderItem={({item}) => <Event item={item} editable/>}
             keyExtractor={(item) => item.id}
         />
-        <TouchableOpacity style={Styles.FloatingButton}>
+        <TouchableOpacity style={Styles.FloatingButton} onPress={() => props.navigation.navigate("AddEvent")}>
             <Ionicons name="add" size={32} color={"white"}/>
         </TouchableOpacity>
     </View>)
