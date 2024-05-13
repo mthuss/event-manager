@@ -7,6 +7,8 @@ import AddEvent from "./addEvent";
 import EditEvent from "./editEvent"
 import { colors } from "./Styles";
 import EventInfo from "./EventInfo";
+import ReservationForm from "./ReservationForm";
+import ReservationsList from "./ReservationsList";
 
 const Tab = createBottomTabNavigator()
 const ManagerStack = createNativeStackNavigator()
@@ -24,6 +26,8 @@ const Home = () => (
     <HomeStack.Navigator initialRouteName="Homescreen" screenOptions={{ headerShown: false }}>
         <HomeStack.Screen name="Homescreen" component={Homescreen}/>
         <HomeStack.Screen name="EventInfo" component={EventInfo}/>
+        <HomeStack.Screen name="ReservationForm" options={{title: "Reservas"}} component={ReservationForm}/>
+        <HomeStack.Screen name="ReservationsList" options={{title: "Reservas"}} component={ReservationsList}/>
     </HomeStack.Navigator>
 )
 

@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import { SafeAreaView, Text, TouchableOpacity, View, Image} from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, View, Image, Alert} from "react-native";
 import Styles, { colors } from "./Styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Bold } from "./Styles";
 import EventsContext from "./EventsContext";
 import PopupMenu from "./popupMenu";
 
-defaultProps = {
-    editable: false,
-}
+// defaultProps = {
+    // editable: false,
+// }
 
 export const Event = ({ item, onPress, editable = false, navigation }) => {
     const { dispatch } = useContext(EventsContext)
@@ -49,3 +49,28 @@ export const Event = ({ item, onPress, editable = false, navigation }) => {
         )
 }
 
+
+export const Reservation = ({item, event, navigation}) => {
+    const { dispatch } = useContext(EventsContext)
+    function confirmDeletion(reservation, event) {
+        Alert.alert("Confirmar deleção", "Deseja mesmo deletar esta reserva?", [
+            { text: "Cancelar" },
+            { text: "OK", onPress: () => dispatch({ type: 'deleteReservation', payload: { reservation: reservation, event: event }}) },
+        ])
+    }
+
+    return(
+    <TouchableOpacity style={[Styles.EventCard, { flexDirection: "row" }]} onPress={() => navigation.navigate("EventInfo", { item: item })}>
+        <View style={{ marginLeft: 10 }}>
+            <Text><Bold>Nome: </Bold>{item.username}</Text>
+            <Text><Bold>CPF: </Bold>{item.cpf}</Text>
+            <Text><Bold>Número de ingressos: </Bold>{item.numTickets}</Text>
+        </View>
+        <TouchableOpacity
+            onPress={() => confirmDeletion(item, event)}
+            style={{ justifyContent: "center", alignContent: "center", position: "absolute", right: 0, alignItems: "center", padding: 16 }}>
+            <Ionicons name="trash-outline" size={24} />
+        </TouchableOpacity>
+    </TouchableOpacity>
+    )
+}

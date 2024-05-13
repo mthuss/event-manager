@@ -74,6 +74,27 @@ export const EventsProvider = props => {
                 saveEvents(updatedEventsList)
                 return {Events: updatedEventsList}
             }
+            case 'addReservation': {
+                const event = action.payload.item
+                const reservations = event.reservations
+                const newReservation = action.payload.reservationData
+                event.reservations = [...reservations, newReservation]
+                event.tickets -= Number(newReservation.numTickets)
+                saveEvents(state.Events)
+                break
+            }
+            case 'deleteReservation': {
+                const reservation = action.payload.reservation
+                const event = action.payload.event
+                console.warn(reservation)
+                const updatedReservationsList = state.Events.filter(item => item.id === reservation.id)
+                if(updatedReservationsList === null)
+                    updatedReservationsList = []
+                event.tickets += Number(reservation.numTickets)
+                event.reservations = updatedReservationsList
+                saveEvents(state.Events)
+                break
+            }
         }
         return {
             ...state,

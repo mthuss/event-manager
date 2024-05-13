@@ -8,26 +8,27 @@ import moment from 'moment'
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker"
 
 export default props => {
+    const item = props.route.params.item ? props.route.params.item : null
     const { state, dispatch } = useContext(EventsContext)
-    const [userInput, setUserInput] = useState("")
-    const [description, setDescription] = useState("")
-    const [tickets, setTickets] = useState("")
-    const [location, setLocation] = useState("")
-    const [pictureUrl, setPictureUrl] = useState("")
-    const [date, setDate] = useState(new Date())
+    const [userInput, setUserInput] = useState(item.name)
+    const [description, setDescription] = useState(item.description)
+    const [tickets, setTickets] = useState(String(item.tickets))
+    const [location, setLocation] = useState(item.location)
+    const [pictureUrl, setPictureUrl] = useState(item.pictureUrl)
+    const [date, setDate] = useState(moment(item.date,'ddd, D [de] MMMM [de] YYYY').toDate())
 
-    function AddEvent() {
+    function EditEvent() {
         dispatch({
-            type: 'addEvent',
+            type: 'updateEvent',
             payload: {
+                id: item.id,
                 name: userInput,
                 description: description,
-                tickets: tickets,
+                tickets: Number(tickets),
                 location: location,
                 pictureUrl: pictureUrl,
                 date: moment(date).format('ddd, D [de] MMMM [de] YYYY'),
-                favorited: false,
-                reservations: []
+                favorited: item.favorited,
             }
         })
     }
@@ -91,7 +92,7 @@ export default props => {
             </View>
 
             <View style={{ marginTop: 5 }}>
-                <Button color={colors.primary} title={"Salvar"} radius={10} onPress={() => { AddEvent(); props.navigation.goBack() }} />
+                <Button color={colors.primary} title={"Salvar"} radius={10} onPress={() => { EditEvent(); props.navigation.goBack() }} />
             </View>
         </ScrollView>
     )
