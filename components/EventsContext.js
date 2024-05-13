@@ -56,6 +56,24 @@ export const EventsProvider = props => {
                 const loadedEvents = action.payload.Events
                 return {Events: loadedEvents}
             }
+            case 'updateEvent': {
+                const updatedEvent = action.payload
+                for(idx in Object.keys(state.Events))
+                    if(state.Events[idx].id === updatedEvent.id)
+                    {
+                        state.Events[idx] = updatedEvent
+                        break
+                    }
+                saveEvents(state.Events)
+                break
+            }
+            case 'deleteEvent': {
+                const event = action.payload
+                //returns a list with every element except the one to be deleted
+                const updatedEventsList = state.Events.filter(item => item.id !== event.id) 
+                saveEvents(updatedEventsList)
+                return {Events: updatedEventsList}
+            }
         }
         return {
             ...state,

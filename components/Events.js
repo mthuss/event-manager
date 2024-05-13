@@ -10,7 +10,7 @@ defaultProps = {
     editable: false,
 }
 
-export const Event = ({ item, onPress, editable = false }) => {
+export const Event = ({ item, onPress, editable = false, navigation }) => {
     const { dispatch } = useContext(EventsContext)
 
     if (editable)
@@ -18,8 +18,7 @@ export const Event = ({ item, onPress, editable = false }) => {
             <View style={[Styles.EventCard, { flexDirection: "row" }]} onPress={onPress}>
                 <Image style={Styles.Icon} source={{ uri: item.pictureUrl ? item.pictureUrl : null }} />
                 <View style={{ marginLeft: 10 }}>
-                    <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
-                    {/* <Text>{item.description && item.description}</Text> */}
+                    <Text style={{ fontWeight: 'bold' }}>{item.name} {item.favorited && <Ionicons name="star"/>}</Text>
                     <Text><Bold>Local: </Bold>{item.location}</Text>
                     <Text><Bold>Data: </Bold>{item.date}</Text>
                     <Text><Bold>Ingressos disponíveis: </Bold>{item.tickets}</Text>
@@ -27,7 +26,7 @@ export const Event = ({ item, onPress, editable = false }) => {
                 {/*extra section that will show up on the manager screen
                 botar um burger menu aqui com "edit" e "delete"
                 trocar esse "position: absolute" por algo melhor*/}
-                <View style={{ justifyContent: "center", alignContent: "center", position: "absolute", right: 0, alignItems: "center"}}><PopupMenu/></View>
+                <View style={{ justifyContent: "center", alignContent: "center", position: "absolute", right: 0, alignItems: "center"}}><PopupMenu item={item} navigation={navigation}/></View>
             </View>
         )
     else
@@ -35,8 +34,7 @@ export const Event = ({ item, onPress, editable = false }) => {
             <TouchableOpacity style={[Styles.EventCard, { flexDirection: "row" }]} onPress={onPress}>
                 <Image style={Styles.Icon} source={{ uri: item.pictureUrl ? item.pictureUrl : null }} />
                 <View style={{ marginLeft: 10 }}>
-                    <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
-                    {/* <Text>{item.description && item.description}</Text> */}
+                    <Text style={{ fontWeight: 'bold' }}>{item.name} {item.favorited && <Ionicons name="star" color={"#ffbf00"}/>}</Text>
                     <Text><Bold>Local: </Bold>{item.location}</Text>
                     <Text><Bold>Data: </Bold>{item.date}</Text>
                     <Text><Bold>Ingressos disponíveis: </Bold>{item.tickets}</Text>

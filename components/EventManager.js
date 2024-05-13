@@ -13,11 +13,11 @@ export default props => {
     return(
     <View style={[Styles.tela,{backgroundColor: '#fff'}]}>
         <FlatList data={state.Events}
-            renderItem={({item}) => <Event item={item} editable/>}
+            renderItem={({item}) => <Event item={item} navigation={props.navigation} editable/>}
             keyExtractor={(item) => item.id}
             onEndReached={() => setReachedEnd(true)}
             onStartReached={() => setReachedEnd(false)}
-            onStartReachedThreshold={0.9}
+            onEndReachedThreshold={0.1}
         />
         {!reachedEnd &&
         <TouchableOpacity style={Styles.FloatingButton} onPress={() => props.navigation.navigate("AddEvent")}>

@@ -9,7 +9,8 @@ export const Bold = props => (
 )
 
 export const colors = {
-    primary: "purple"
+    primary: "purple",
+    favorited: "#ffbf00"
 }
 
 export default Styles = StyleSheet.create({
@@ -28,6 +29,15 @@ export default Styles = StyleSheet.create({
     EventCard: {
         borderStyle: 'solid',
         borderWidth: 1,
+        margin: 10,
+        padding: 10,
+        borderRadius: 10,
+        alignItems: "center",
+    },
+    EventCardFavorited: {
+        borderStyle: 'solid',
+        borderColor: "#ffbf00",
+        borderWidth: 2,
         margin: 10,
         padding: 10,
         borderRadius: 10,

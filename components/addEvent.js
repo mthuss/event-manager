@@ -26,6 +26,7 @@ export default props => {
                 location: location,
                 pictureUrl: pictureUrl,
                 date: moment(date).format('ddd, D [de] MMMM [de] YYYY'),
+                favorited: false
             }
         })
     }
@@ -43,53 +44,53 @@ export default props => {
         });
     }
 
-    return(
-        <ScrollView style={{flex: 1, padding: 32}}>
-            <Text style={{textAlign: "center", fontSize: 32, marginBottom: 42}}><Bold>Adicionar Evento</Bold></Text>
+    return (
+        <ScrollView style={{ flex: 1, padding: 32 }}>
+            <Text style={{ textAlign: "center", fontSize: 32, marginBottom: 42 }}><Bold>Adicionar Evento</Bold></Text>
             <View>
-                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Nome: </Bold></Text>
+                <Text style={{ marginBottom: 5, fontSize: 16 }}><Bold>Nome: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput fontSize={16} paddingLeft={6} placeholder="Meu evento maneiro" onChangeText={setUserInput} value={userInput}/>
-                </View>
-            </View>
-
-            <View>
-                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Descrição: </Bold></Text>
-                <View style={[Styles.InputBox, {height: 100}]}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="Descrição" onChangeText={setDescription} value={description}/>
+                    <TextInput fontSize={16} paddingLeft={6} placeholder="Meu evento maneiro" onChangeText={setUserInput} value={userInput} />
                 </View>
             </View>
 
             <View>
-                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Local: </Bold></Text>
-                <View style={Styles.InputBox}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="Local" onChangeText={setLocation} value={location}/>
+                <Text style={{ marginBottom: 5, fontSize: 16 }}><Bold>Descrição: </Bold></Text>
+                <View style={[Styles.InputBox, { height: 100 }]}>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="Descrição" onChangeText={setDescription} value={description} />
                 </View>
             </View>
 
             <View>
-                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Imagem: </Bold></Text>
+                <Text style={{ marginBottom: 5, fontSize: 16 }}><Bold>Local: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="URL da Imagem" onChangeText={setPictureUrl} value={pictureUrl}/>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="Local" onChangeText={setLocation} value={location} />
                 </View>
             </View>
 
-            <View style={{flexDirection: "row", alignContent: "center", alignContent: "center", alignItems: "center", marginTop: 5}}>
-                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Ingressos disponíveis: </Bold></Text>
+            <View>
+                <Text style={{ marginBottom: 5, fontSize: 16 }}><Bold>Imagem: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput fontSize={16} textAlign="center" placeholder="0" onChangeText={setTickets} value={tickets} inputMode="numeric"/>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="URL da Imagem" onChangeText={setPictureUrl} value={pictureUrl} />
                 </View>
             </View>
 
-            <View style={{flexDirection: "row", alignContent: "center", alignContent: "center", alignItems: "center", marginTop: 5}}>
-                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Data: </Bold></Text>
-                <TouchableHighlight style={[Styles.InputBox, {flex: 1}]} onPress={showDatepicker}>
-                <Text>{moment(date).format('ddd, D [de] MMMM [de] YYYY')}</Text>
+            <View style={{ flexDirection: "row", alignContent: "center", alignContent: "center", alignItems: "center", marginTop: 5 }}>
+                <Text style={{ marginBottom: 5, fontSize: 16 }}><Bold>Ingressos disponíveis: </Bold></Text>
+                <View style={Styles.InputBox}>
+                    <TextInput fontSize={16} textAlign="center" placeholder="0" onChangeText={setTickets} value={tickets} inputMode="numeric" />
+                </View>
+            </View>
+
+            <View style={{ flexDirection: "row", alignContent: "center", alignContent: "center", alignItems: "center", marginTop: 5 }}>
+                <Text style={{ marginBottom: 5, fontSize: 16 }}><Bold>Data: </Bold></Text>
+                <TouchableHighlight style={[Styles.InputBox, { flex: 1 }]} onPress={showDatepicker}>
+                    <Text>{moment(date).format('ddd, D [de] MMMM [de] YYYY')}</Text>
                 </TouchableHighlight>
             </View>
 
             <View style={{ marginTop: 5 }}>
-                <Button color={colors.primary} title={"Salvar"} radius={10} onPress={() => {AddEvent(); props.navigation.goBack()}} />
+                <Button color={colors.primary} title={"Salvar"} radius={10} onPress={() => { AddEvent(); props.navigation.goBack() }} />
             </View>
         </ScrollView>
     )

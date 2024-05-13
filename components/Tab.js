@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AddEvent from "./addEvent";
+import EditEvent from "./editEvent"
 import { colors } from "./Styles";
 
 const Tab = createBottomTabNavigator()
@@ -13,6 +14,7 @@ const Manager = () => (
     <ManagerStack.Navigator initialRouteName="Manager" screenOptions={{ headerShown: false }}>
         <ManagerStack.Screen name="Manager" component={EventManager}/>
         <ManagerStack.Screen name="AddEvent" component={AddEvent}/>
+        <ManagerStack.Screen name="EditEvent" component={EditEvent}/>
     </ManagerStack.Navigator>
 )
 
