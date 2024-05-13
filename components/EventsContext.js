@@ -7,8 +7,20 @@ const initialState = { Events }
 
 export const EventsProvider = props => {
     function reducer(state, action) {
-        console.warn(action)
-        return state
+        switch(action.type) {
+            case 'addEvent': {
+        //        console.warn(action.payload)
+                const event = action.payload
+                event.id = Math.random()
+                /* desconstrói os eventos que já existem com o ...state.Events 
+                e os adiciona numa lista com o evento novo */
+                const updatedEventsList = [...state.Events, event]
+                return{Events: updatedEventsList} //substitui o conteúdo de Events com a lista atualizada
+            }
+        }
+        return {
+            ...state,
+        }
     }
 
     /*cria o state(que receberá o valor de initialState) e o dispatcher,

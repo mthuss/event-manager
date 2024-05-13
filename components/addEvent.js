@@ -13,11 +13,21 @@ export default props => {
     const [description, setDescription] = useState("")
     const [tickets, setTickets] = useState("")
     const [location, setLocation] = useState("")
-    const [pictureURL, setPictureURL] = useState("")
+    const [pictureUrl, setPictureUrl] = useState("")
     const [date, setDate] = useState(new Date())
 
-    function AddUser() {
-
+    function AddEvent() {
+        dispatch({
+            type: 'addEvent',
+            payload: {
+                name: userInput,
+                description: description,
+                tickets: tickets,
+                location: location,
+                pictureUrl: pictureUrl,
+                date: moment(date).format('ddd, D [de] MMMM [de] YYYY'),
+            }
+        })
     }
 
     const onChange = (event, selectedDate) => {
@@ -60,7 +70,7 @@ export default props => {
             <View>
                 <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Imagem: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} textAlign="center" placeholder="URL da Imagem" onChangeText={setPictureURL} value={pictureURL}/>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} textAlign="center" placeholder="URL da Imagem" onChangeText={setPictureUrl} value={pictureUrl}/>
                 </View>
             </View>
 
@@ -79,7 +89,7 @@ export default props => {
             </View>
 
             <View style={{ marginTop: 5 }}>
-                <Button color={colors.primary} title={"Salvar"} radius={10} onPress={() => {console.warn(Number(tickets))}} />
+                <Button color={colors.primary} title={"Salvar"} radius={10} onPress={() => {AddEvent(); props.navigation.goBack()}} />
             </View>
         </ScrollView>
     )
