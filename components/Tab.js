@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator()
 const ManagerStack = createNativeStackNavigator()
 
 const Manager = () => (
-    <ManagerStack.Navigator initialRouteName="Manager" screenOptions={{ headerShown: false }}>
+    <ManagerStack.Navigator initialRouteName="addEvent" screenOptions={{ headerShown: false }}>
         <ManagerStack.Screen name="Manager" component={EventManager}/>
         <ManagerStack.Screen name="AddEvent" component={AddEvent}/>
     </ManagerStack.Navigator>

@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet} from 'react-native';
 import MyTab from './components/Tab';
 import { EventsProvider } from './components/EventsContext';
 

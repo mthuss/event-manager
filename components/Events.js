@@ -2,6 +2,7 @@ import React from "react";
 import { SafeAreaView, Text, TouchableOpacity, View, Image} from "react-native";
 import Styles from "./Styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { Bold } from "./Styles";
 
 export const Events = [
     {
@@ -47,12 +48,6 @@ export const Events = [
 
 ]
 
-//for prettier inline boldening of text
-const Bold = props => (
-    <Text style={{fontWeight: "bold"}}>
-        {props.children}
-    </Text>
-)
 defaultProps = {
     editable: false,
 }
@@ -65,11 +60,12 @@ export const Event = ({ item, onPress, editable = false}) => {
                 {/* <Text>{item.description && item.description}</Text> */}
                 <Text><Bold>Local: </Bold>{item.location}</Text>
                 <Text><Bold>Data: </Bold>{item.date}</Text>
+                <Text><Bold>Ingressos disponíveis: </Bold>{item.available}</Text>
             </View>
             {editable && //extra section that will show up on the manager screen
             //botar um burger menu aqui com "edit" e "delete"
             //trocar esse "position: absolute" por algo melhor
-            <View style={{justifyContent: "center", alignContent: "center", position: "absolute", right: 20, top: 32,}}><Ionicons name="pencil" size={16}/></View>}
+            <View style={{justifyContent: "center", alignContent: "center", position: "absolute", right: 20, alignItems: "center"}}><Ionicons name="pencil" size={16}/></View>}
         </TouchableOpacity>)
 }
 

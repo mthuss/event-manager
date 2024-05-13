@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { FlatList, Text, Touchable, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import Styles from "./Styles";
 import {Event} from "./Events";
 import EventsContext from "./EventsContext";
 import Ionicons from "react-native-vector-icons/Ionicons"
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
 export default props => {
