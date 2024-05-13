@@ -2,16 +2,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet} from 'react-native';
 import MyTab from './components/Tab';
 import { EventsProvider } from './components/EventsContext';
+import { MenuProvider } from 'react-native-popup-menu';
 
 //safe area view aparentemente ta meio q inútil aqui...
 export default function App() {
   return (
     <EventsProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <NavigationContainer>
-          <MyTab></MyTab>
-        </NavigationContainer>
-      </SafeAreaView>
+      <MenuProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <NavigationContainer>
+            <MyTab></MyTab>
+          </NavigationContainer>
+        </SafeAreaView>
+      </MenuProvider>
     </EventsProvider>
   );
 }

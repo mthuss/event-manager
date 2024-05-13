@@ -49,28 +49,28 @@ export default props => {
             <View>
                 <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Nome: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput fontSize={16} textAlign="center" placeholder="Meu evento maneiro" onChangeText={setUserInput} value={userInput}/>
+                    <TextInput fontSize={16} paddingLeft={6} placeholder="Meu evento maneiro" onChangeText={setUserInput} value={userInput}/>
                 </View>
             </View>
 
             <View>
                 <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Descrição: </Bold></Text>
                 <View style={[Styles.InputBox, {height: 100}]}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} textAlign="center" placeholder="Descrição" onChangeText={setDescription} value={description}/>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="Descrição" onChangeText={setDescription} value={description}/>
                 </View>
             </View>
 
             <View>
                 <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Local: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} textAlign="center" placeholder="Local" onChangeText={setLocation} value={location}/>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="Local" onChangeText={setLocation} value={location}/>
                 </View>
             </View>
 
             <View>
                 <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Imagem: </Bold></Text>
                 <View style={Styles.InputBox}>
-                    <TextInput textAlignVertical="center" multiline fontSize={16} textAlign="center" placeholder="URL da Imagem" onChangeText={setPictureUrl} value={pictureUrl}/>
+                    <TextInput textAlignVertical="center" multiline fontSize={16} paddingLeft={6} placeholder="URL da Imagem" onChangeText={setPictureUrl} value={pictureUrl}/>
                 </View>
             </View>
 

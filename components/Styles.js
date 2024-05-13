@@ -50,6 +50,7 @@ export default Styles = StyleSheet.create({
         position: "absolute",
         bottom: 20,
         right: 20,
+        elevation: 2,
     },
     InputBox: {
         borderStyle: "solid",

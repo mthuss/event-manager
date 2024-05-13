@@ -1,10 +1,8 @@
 import React, {createContext, useEffect, useReducer} from "react";
-import {Events} from "./Events";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const EventsContext = createContext({})
 
-// const initialState = { Events }
 const initialState = {Events: []}
 
 async function saveEvents(events) {
