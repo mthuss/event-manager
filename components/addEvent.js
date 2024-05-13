@@ -1,9 +1,11 @@
-import { View, ScrollView, Text, TextInput } from "react-native"
+import { View, ScrollView, Text, TextInput, TouchableHighlight } from "react-native"
 import Styles from "./Styles"
 import { useContext, useState } from "react"
 import EventsContext from "./EventsContext"
 import { Bold, colors } from "./Styles"
 import { Button } from "@rneui/base"
+import moment from 'moment'
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker"
 
 export default props => {
     const { state, dispatch } = useContext(EventsContext)
@@ -12,9 +14,23 @@ export default props => {
     const [tickets, setTickets] = useState("")
     const [location, setLocation] = useState("")
     const [pictureURL, setPictureURL] = useState("")
+    const [date, setDate] = useState(new Date())
 
     function AddUser() {
 
+    }
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate
+        setDate(currentDate)
+    }
+
+    const showDatepicker = () => {
+        DateTimePickerAndroid.open({
+            value: date,
+            onChange,
+            mode: 'date',
+        });
     }
 
     return(
@@ -53,6 +69,13 @@ export default props => {
                 <View style={Styles.InputBox}>
                     <TextInput fontSize={16} textAlign="center" placeholder="0" onChangeText={setTickets} value={tickets} inputMode="numeric"/>
                 </View>
+            </View>
+
+            <View style={{flexDirection: "row", alignContent: "center", alignContent: "center", alignItems: "center", marginTop: 5}}>
+                <Text style={{marginBottom: 5, fontSize: 16}}><Bold>Data: </Bold></Text>
+                <TouchableHighlight style={[Styles.InputBox, {flex: 1}]} onPress={showDatepicker}>
+                <Text>{moment(date).format('ddd, D [de] MMMM [de] YYYY')}</Text>
+                </TouchableHighlight>
             </View>
 
             <View style={{ marginTop: 5 }}>
