@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Text } from "@rneui/base";
+import { SocialIcon, Text } from "@rneui/base";
 
 //for prettier inline boldening of text
 export const Bold = props => (
@@ -68,5 +68,26 @@ export default Styles = StyleSheet.create({
         padding: 8,
         borderRadius: 10,
         marginBottom: 5
+    },
+    EventBanner: {
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "black",
+        borderRadius: 10,
+        width: "100%",
+        height: 150,
+    },
+    Card: {
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderRadius: 10,
+        width: "100%",
+        paddingHorizontal: 16,
+        paddingVertical: 10
+    },
+    CardHeader: {
+        fontSize: 20,
+        marginTop: 16,
+        marginBottom: 8
     }
 })

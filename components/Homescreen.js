@@ -10,7 +10,7 @@ export default props => {
     return(
     <View style={[Styles.tela,{backgroundColor: '#fff'}]}>
         <FlatList data={state.Events}
-            renderItem={({item}) => <Event item={item}/>}
+            renderItem={({item}) => <Event item={item} navigation={props.navigation}/>}
             keyExtractor={(item) => item.id}
         />
     </View>)
