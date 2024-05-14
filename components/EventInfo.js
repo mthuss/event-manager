@@ -1,7 +1,8 @@
-import { ScrollView, Image, View, Text } from "react-native"
+import { ScrollView, Image, View, Text, TouchableOpacity } from "react-native"
 import Styles, { Bold, colors } from "./Styles"
 import { StyleSheet } from "react-native"
 import { Button } from "@rneui/base"
+import Ionicons from "react-native-vector-icons/Ionicons"
 
 export default props => {
     const item = props.route.params.item
@@ -33,6 +34,10 @@ export default props => {
             <View style={{alignItems: "center", marginTop: 8}}>
                 <Text><Bold>{item.tickets} Disponíveis!</Bold></Text>
             </View>
+            <TouchableOpacity style={{justifyContent: "center", alignItems: "center", flexDirection: "row", marginTop: 16}} onPress={()=>props.navigation.navigate("ReservationsList", {item: item})}>
+                <Ionicons name="help-circle-outline" size={24} />
+                <Text> Ver todas as reservas</Text>
+            </TouchableOpacity>
         </ScrollView>
     )
 }
