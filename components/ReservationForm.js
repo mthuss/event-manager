@@ -1,4 +1,4 @@
-import { ScrollView, View, Text, Image, StyleSheet, TextInput } from "react-native"
+import { ScrollView, View, Text, Image, StyleSheet, TextInput, Alert } from "react-native"
 import { Bold, colors } from "./Styles"
 import { useContext, useState } from "react"
 import { Button } from "@rneui/base"
@@ -12,25 +12,31 @@ export default props => {
     const {dispatch} = useContext(EventsContext)
 
     function AddReservation(){
-        dispatch({ type: 'addReservation',
-        payload: {
-            item: item,
-            reservationData: {
-                id: Math.random(),
-                username: userInput,
-                cpf: CPF,
-                numTickets: Number(numTickets)
-            }
+        //check for valid ticket reservation number
+        if(numTickets > item.tickets)
+            Alert.alert("Número inválido","O número de ingressos requisitado é maior do que o disponível. Por favor tente novamente.",[{text: "OK"}])
+        else{
+            dispatch({
+                type: 'addReservation',
+                payload: {
+                    item: item,
+                    reservationData: {
+                        id: Math.random(),
+                        username: userInput,
+                        cpf: CPF,
+                        numTickets: Number(numTickets)
+                    }
+                }
+            })
+            props.navigation.goBack()
         }
-
-        })
     }
     return (
         <ScrollView style={{ flex: 1, padding: 16 }}>
-            <View style={{justifyContent: "center", alignContent: "center", alignItems: "center", marginBottom: 14}}>
+            <View style={{ justifyContent: "center", alignContent: "center", alignItems: "center", marginBottom: 14 }}>
                 <Image style={Styles.EventBanner} source={{ uri: item.pictureUrl ? item.pictureUrl : null }} />
-                <Text style={{ fontSize: 32, marginTop: 16, textAlign: "center"}}><Bold>{item.name}</Bold></Text>
-                <Text style={{marginTop: 8}}><Bold>Reserva</Bold></Text>
+                <Text style={{ fontSize: 32, marginTop: 16, textAlign: "center" }}><Bold>{item.name}</Bold></Text>
+                <Text style={{ marginTop: 8 }}><Bold>Reserva</Bold></Text>
             </View>
             <View style={{
                 borderBottomColor: 'black',
@@ -57,10 +63,10 @@ export default props => {
                     <View style={Styles.InputBox}>
                         <TextInput fontSize={16} textAlign="center" placeholder="0" onChangeText={setNumTickets} value={numTickets} inputMode="numeric" />
                     </View>
-                    <Text style={{fontSize: 16}}><Bold> / {item.tickets}</Bold></Text>
+                    <Text style={{ fontSize: 16 }}><Bold> / {item.tickets}</Bold></Text>
                 </View>
                 <View style={{ marginTop: 5 }}>
-                    <Button color={colors.primary} title={"Reservar"} radius={10} onPress={() => { AddReservation(); props.navigation.goBack() }} />
+                    <Button color={colors.primary} title={"Reservar"} radius={10} onPress={() => { AddReservation(); }} />
                 </View>
             </View>
         </ScrollView>
