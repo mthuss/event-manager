@@ -37,6 +37,9 @@ export default props => {
                     <TouchableOpacity style={[Styles.FloatingButton, {right: 85}]} onPress={()=>deleteAll()}>
                         <Ionicons name="trash" size={32} color={"white"} />
                     </TouchableOpacity>
+                    <TouchableOpacity style={[Styles.FloatingButton, {right: 150}]} onPress={()=>props.navigation.navigate("Search")}>
+                        <Ionicons name="search" size={32} color={"white"} />
+                    </TouchableOpacity>
                 </>
             }
         </View>)

@@ -9,6 +9,7 @@ import { colors } from "./Styles";
 import EventInfo from "./EventInfo";
 import ReservationForm from "./ReservationForm";
 import ReservationsList from "./ReservationsList";
+import ManagerSearch from "./ManagerSearch";
 
 const Tab = createBottomTabNavigator()
 const ManagerStack = createNativeStackNavigator()
@@ -19,6 +20,7 @@ const Manager = () => (
         <ManagerStack.Screen name="Manager" component={EventManager}/>
         <ManagerStack.Screen name="AddEvent" component={AddEvent}/>
         <ManagerStack.Screen name="EditEvent" component={EditEvent}/>
+        <ManagerStack.Screen name="Search" component={ManagerSearch}/>
     </ManagerStack.Navigator>
 )
 
@@ -39,6 +41,7 @@ export default props => {
                 tabBarInactiveTintColor: 'gray',
                 tabBarLabelStyle: { fontSize: 16 },
                 tabBarStyle: {height: 64},
+                tabBarHideOnKeyboard: true,
             }}
             initialRouteName="Eventos">
             <Tab.Screen name="Eventos" component={Home}
