@@ -15,6 +15,8 @@ export default props => {
         //check for valid ticket reservation number
         if(numTickets > item.tickets)
             Alert.alert("Número inválido","O número de ingressos requisitado é maior do que o disponível. Por favor tente novamente.",[{text: "OK"}])
+        else if(numTickets == 0 || CPF == "" || userInput == "")
+            Alert.alert("Campos inválidos", "Um ou mais campos foram deixados em branco. Por favor preencha todos.", [{text: "OK"}])
         else{
             dispatch({
                 type: 'addReservation',
@@ -66,7 +68,7 @@ export default props => {
                     <Text style={{ fontSize: 16 }}><Bold> / {item.tickets}</Bold></Text>
                 </View>
                 <View style={{ marginTop: 5 }}>
-                    <Button color={colors.primary} title={"Reservar"} radius={10} onPress={() => { AddReservation(); }} />
+                    <Button color={colors.primary} title={"Reservar"} radius={10} onPress={AddReservation} />
                 </View>
             </View>
         </ScrollView>
