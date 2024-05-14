@@ -9,10 +9,13 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 export default props => {
     const {state,dispatch} = useContext(EventsContext)
     const [reachedEnd, setReachedEnd] = useState(false)
+    const favoritesList = state.Events.filter(item => item.favorited === true)
+    const remainderList = state.Events.filter(item => item.favorited === false)
+    const sortedList = [...favoritesList, ...remainderList]
 
     return(
     <View style={[Styles.tela,{backgroundColor: '#fff'}]}>
-        <FlatList data={state.Events}
+        <FlatList data={sortedList}
             renderItem={({item}) => <Event item={item} navigation={props.navigation} editable/>}
             keyExtractor={(item) => item.id}
             onEndReached={() => setReachedEnd(true)}

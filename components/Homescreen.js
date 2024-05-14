@@ -6,10 +6,13 @@ import EventsContext from "./EventsContext";
 
 export default props => {
     const {state} = useContext(EventsContext)
+    const favoritesList = state.Events.filter(item => item.favorited === true)
+    const remainderList = state.Events.filter(item => item.favorited === false)
+    const sortedList = [...favoritesList, ...remainderList]
 
     return(
-    <View style={[Styles.tela,{backgroundColor: '#fff'}]}>
-        <FlatList data={state.Events}
+    <View style={{backgroundColor: '#fff', justifyContent: "center", flex: 1}}>
+        <FlatList data={sortedList}
             renderItem={({item}) => <Event item={item} navigation={props.navigation}/>}
             keyExtractor={(item) => item.id}
         />

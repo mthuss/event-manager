@@ -8,7 +8,6 @@ export default props => {
     const {state} = useContext(EventsContext)
     const reservations = props.route.params.item.reservations
     const event = props.route.params.item
-    console.warn(reservations)
 
     return(
         <View style={[Styles.tela, { backgroundColor: "#fff" }]}>
