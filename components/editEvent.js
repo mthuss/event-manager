@@ -29,6 +29,7 @@ export default props => {
                 pictureUrl: pictureUrl,
                 date: moment(date).format('ddd, D [de] MMMM [de] YYYY'),
                 favorited: item.favorited,
+                reservations: item.reservations
             }
         })
     }

@@ -86,8 +86,7 @@ export const EventsProvider = props => {
             case 'deleteReservation': {
                 const reservation = action.payload.reservation
                 const event = action.payload.event
-                console.warn(reservation)
-                const updatedReservationsList = state.Events.filter(item => item.id === reservation.id)
+                const updatedReservationsList = event.reservations.filter(item => item.id !== reservation.id)
                 if(updatedReservationsList === null)
                     updatedReservationsList = []
                 event.tickets += Number(reservation.numTickets)
@@ -95,6 +94,8 @@ export const EventsProvider = props => {
                 saveEvents(state.Events)
                 break
             }
+            case 'deleteAllEvents':
+                return{Events: []}
         }
         return {
             ...state,
