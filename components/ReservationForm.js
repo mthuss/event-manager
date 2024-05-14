@@ -15,7 +15,7 @@ export default props => {
         //check for valid ticket reservation number
         if(numTickets > item.tickets)
             Alert.alert("Número inválido","O número de ingressos requisitado é maior do que o disponível. Por favor tente novamente.",[{text: "OK"}])
-        else if(numTickets == 0 || CPF == "" || userInput == "")
+        else if(numTickets <= 0 || CPF == "" || userInput == "")
             Alert.alert("Campos inválidos", "Um ou mais campos foram deixados em branco. Por favor preencha todos.", [{text: "OK"}])
         else{
             dispatch({

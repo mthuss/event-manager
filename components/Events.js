@@ -60,7 +60,7 @@ export const Reservation = ({item, event, navigation}) => {
     }
 
     return(
-    <TouchableOpacity style={[Styles.EventCard, { flexDirection: "row" }]} onPress={() => navigation.navigate("EventInfo", { item: item })}>
+    <View style={[Styles.EventCard, { flexDirection: "row" }]}>
         <View style={{ marginLeft: 10 }}>
             <Text><Bold>Nome: </Bold>{item.username}</Text>
             <Text><Bold>CPF: </Bold>{item.cpf}</Text>
@@ -71,6 +71,6 @@ export const Reservation = ({item, event, navigation}) => {
             style={{ justifyContent: "center", alignContent: "center", position: "absolute", right: 0, alignItems: "center", padding: 16 }}>
             <Ionicons name="trash-outline" size={24} />
         </TouchableOpacity>
-    </TouchableOpacity>
+    </View>
     )
 }
